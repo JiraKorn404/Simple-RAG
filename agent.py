@@ -4,8 +4,8 @@ from flashrank import Ranker, RerankRequest
 from langchain_core.tools import tool
 from langchain.agents import create_agent
 from langgraph.checkpoint.memory import MemorySaver
-from p_database import get_vector_store
-from p_config import settings
+from database import get_vector_store
+from config import settings
 
 ranker = Ranker(model_name='ms-marco-MiniLM-L-12-v2', cache_dir='./opt')
 

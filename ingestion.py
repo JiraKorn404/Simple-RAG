@@ -2,8 +2,8 @@ import os
 import hashlib
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from p_database import get_vector_store, init_collection
-from p_config import settings
+from database import get_vector_store, init_collection
+from config import settings
 
 def generate_chunk_id(
         content: str,

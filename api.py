@@ -4,8 +4,8 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from langchain_core.messages import HumanMessage
 
-from p_agent import build_agent
-from p_ingestion import ingest_documents
+from agent import build_agent
+from ingestion import ingest_documents
 
 app = FastAPI(title='RAG AGENT', version='1.0')
 

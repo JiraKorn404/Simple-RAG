@@ -2,7 +2,7 @@ from qdrant_client import QdrantClient, models
 from qdrant_client.models import VectorParams, Distance, SparseVectorParams
 from langchain_qdrant import QdrantVectorStore, RetrievalMode, FastEmbedSparse
 from langchain_openai import OpenAIEmbeddings
-from p_config import settings
+from config import settings
 
 vector_name = 'text_embedding'
 
