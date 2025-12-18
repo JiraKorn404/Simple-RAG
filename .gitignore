@@ -1,0 +1,30 @@
+# --- Python / Environment ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+.python-version
+.pytest_cache/
+.deepeval/
+
+# --- Environment Secrets (DO NOT PUSH) ---
+.env
+.env.local
+.env.*
+
+# --- Databases / Vector Stores ---
+# These are usually too large for Git and should be handled via Docker volumes
+qdrant_data/
+qdrant_storage/
+
+# --- Project Specific ---
+# Deleting or ignoring "depricated" folders is good practice if they contain old junk
+depricated/
+opt/
+
+# # --- OS / IDE ---
+# .DS_Store
+# .vscode/
+# .idea/

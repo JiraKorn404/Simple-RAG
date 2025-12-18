@@ -1,0 +1,25 @@
+services:
+  # 1. The Vector Database Service
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"
+    volumes:
+      # Persist Qdrant data so you don't lose it when restarting
+      - ./qdrant_data:/qdrant/storage
+
+  # 2. Your RAG API Service
+  rag-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      # Override the QDRANT_URL to point to the service name 'qdrant'
+      - QDRANT_URL=http://qdrant:6333
+      # Pass your API keys here
+      # OPENAI_API_KEY=${}
+    volumes:
+      # Mount the docs folder so you can add PDFs without rebuilding the image
+      - ./docs:/app/docs
+    depends_on:
+      - qdrant

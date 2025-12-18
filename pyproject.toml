@@ -1,0 +1,23 @@
+[project]
+name = "rag-modular"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "deepeval>=3.7.5",
+    "fastapi>=0.124.4",
+    "fastembed>=0.7.4",
+    "flashrank>=0.2.10",
+    "langchain>=1.2.0",
+    "langchain-community>=0.4.1",
+    "langchain-google-genai>=4.0.0",
+    "langchain-openai>=1.1.0",
+    "langchain-qdrant>=1.1.0",
+    "langchain-text-splitters>=1.0.0",
+    "openai>=2.8.1",
+    "pypdf>=6.4.0",
+    "python-dotenv>=1.2.1",
+    "qdrant-client>=1.16.1",
+    "uvicorn>=0.38.0",
+]
