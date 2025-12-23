@@ -16,8 +16,10 @@ dependencies = [
     "langchain-qdrant>=1.1.0",
     "langchain-text-splitters>=1.0.0",
     "openai>=2.8.1",
+    "pymongo>=4.15.5",
     "pypdf>=6.4.0",
     "python-dotenv>=1.2.1",
+    "python-multipart>=0.0.21",
     "qdrant-client>=1.16.1",
     "uvicorn>=0.38.0",
 ]

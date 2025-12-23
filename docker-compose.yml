@@ -1,5 +1,18 @@
+version: '3.8'
+
 services:
-  # 1. The Vector Database Service
+  # 1 Mongodb service
+  mongo:
+    image: mongo:7.0
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: 12345
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodata:/data/db
+
+  # 2. The Vector Database Service
   qdrant:
     image: qdrant/qdrant:latest
     ports:
@@ -8,18 +21,26 @@ services:
       # Persist Qdrant data so you don't lose it when restarting
       - ./qdrant_data:/qdrant/storage
 
-  # 2. Your RAG API Service
+  # 3. Your RAG API Service
   rag-api:
     build: .
     ports:
-      - "8000:8000"
+      - "7000:7000"
     environment:
-      # Override the QDRANT_URL to point to the service name 'qdrant'
+      # Override Qdrant URL
       - QDRANT_URL=http://qdrant:6333
+      # Add the MongoDB Connection String for Docker
+      - MONGODB_URL=mongodb://admin:12345@mongo:27017
       # Pass your API keys here
-      # OPENAI_API_KEY=${}
+      # - OPENAI_API_KEY=${}
     volumes:
+      - .:/app
       # Mount the docs folder so you can add PDFs without rebuilding the image
-      - ./docs:/app/docs
+      # - ./docs:/app/docs
     depends_on:
       - qdrant
+      - mongo
+    command: uvicorn api:app --host 0.0.0.0 --port 7000 --reload
+
+volumes:
+    mongodata:
