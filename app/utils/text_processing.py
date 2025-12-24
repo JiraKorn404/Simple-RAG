@@ -1,7 +1,7 @@
 import hashlib
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from database import get_vector_store, init_collection
+from app.database_setup.qdrant_setup import get_vector_store, init_collection
 
 def generate_chunk_id(
         content: str,

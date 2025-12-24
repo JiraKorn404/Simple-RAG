@@ -28,11 +28,11 @@ services:
       - "7000:7000"
     environment:
       # Override Qdrant URL
-      - QDRANT_URL=http://qdrant:6333
+      - QDRANT_URL
       # Add the MongoDB Connection String for Docker
-      - MONGODB_URL=mongodb://admin:12345@mongo:27017
+      - MONGODB_URL
       # Pass your API keys here
-      # - OPENAI_API_KEY=${}
+      - OPENAI_API_KEY
     volumes:
       - .:/app
       # Mount the docs folder so you can add PDFs without rebuilding the image
@@ -40,7 +40,7 @@ services:
     depends_on:
       - qdrant
       - mongo
-    command: uvicorn api:app --host 0.0.0.0 --port 7000 --reload
+    command: uvicorn app.core.api:app --host 0.0.0.0 --port 7000 --reload
 
 volumes:
     mongodata:
